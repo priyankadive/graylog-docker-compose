@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    image: priyankadive/python:latest
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/code
+    logging: 
+        driver: "gelf"
+        options:         
+          gelf-address: "udp://localhost:12201"
+  redis:
+    image: "redis:alpine"
